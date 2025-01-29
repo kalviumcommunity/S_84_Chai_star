@@ -20,7 +20,7 @@ Frontend: React.js, Tailwind CSS
 Backend: Node.js, Express.js
 Database: MongoDB
 APIs & AI: OpenAI API (for AI-powered search & suggestions)
-Hosting & Deployment: Vercel / AWS
+Hosting & Deployment: Vercel / AWS / Google
 
 # Why This Project?
 Tea culture is an integral part of many countries, and chaiwalas have fascinating stories of resilience and success. What excites me about this project is the combination of storytelling, technology, and social impact. I will be able to develop skills in full-stack web development, AI-powered search, and UI/UX design while creating a unique platform that celebrates real-life success stories.
