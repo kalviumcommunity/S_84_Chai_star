@@ -1,3 +1,4 @@
+
 # Chaiwala Ranking App
 
 ## 📌 Key Features
@@ -53,3 +54,4 @@ This project covers a wide-ranging set of technical and creative skills:
 ## 🎯 Value of the Project
 
 This project brings together the humor and nostalgia of chai culture with the practicality of learning full-stack development. By building this app, users can not only explore and celebrate local chaiwalas but also get involved in technical concepts such as database management, API development, and React UI design. The playful nature of the project ensures it's both engaging and a memorable learning experience.
+=======
