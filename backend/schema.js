@@ -7,4 +7,4 @@ const chaiwalaSchema = new mongoose.Schema({
 
 const Chaiwala = mongoose.model("Chaiwala", chaiwalaSchema);
 
-module.exports = Chaiwala;
+module.exports = Chaiwala; 

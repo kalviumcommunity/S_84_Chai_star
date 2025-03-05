@@ -11,7 +11,7 @@ router.get("/chaiwalas", async (req, res) => {
         res.status(500).json({ message: "Error fetching chaiwalas", error });
     }
 });
-
+ 
 // POST a new chaiwala
 router.post("/chaiwalas", async (req, res) => {
     try {
