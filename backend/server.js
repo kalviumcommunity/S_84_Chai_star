@@ -24,7 +24,7 @@ app.use("/api", chaiwalaRoutes); // All API routes will be prefixed with /api
 app.get("/", (req, res) => {
     res.send("<h1>Welcome to Chaiwala Ranking API</h1>");
 });
-
+ 
 // Server Listening
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`); 
