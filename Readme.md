@@ -1,6 +1,9 @@
 
 # Chaiwala Ranking App
 
+## Cloudflare link
+https://fa4eff9e.chai-star-asap.pages.dev/
+
 ## 📌 Key Features
 
 ### 🔐 User Login and Personalization
