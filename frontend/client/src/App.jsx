@@ -1,6 +1,6 @@
 import React from "react";
 import LandingPage from "./pages/landingpage";
-import Chaicard from './components/chaiwalaCard' // Import ChaiwalaCard
+import Chaicard from './components/chaiwalaCard' 
 import "./App.css";
 
 const dummyChaiwala = {
