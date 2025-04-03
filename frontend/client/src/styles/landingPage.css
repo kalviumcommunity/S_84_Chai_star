@@ -120,3 +120,212 @@
     }
   }
   
+  .show-chaiwalas-button {
+    background-color: #d2691e; /* Chai-inspired brown */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 20px 0;
+    display: inline-block;
+  }
+  
+  .show-chaiwalas-button:hover {
+    background-color: #a0522d; /* Darker chai tone */
+  }
+  
+  .show-chaiwalas-button:active {
+    background-color: #8b4513; /* Even darker shade for click effect */
+  }
+  
+  .show-chaiwalas-button:disabled {
+    background-color: #c4a484;
+    cursor: not-allowed;
+  }
+  
+  .show-chaiwalas-button {
+    background-color: #d2691e; /* Chai-inspired brown */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 20px 0;
+    display: inline-block;
+  }
+  
+  .show-chaiwalas-button:hover {
+    background-color: #a0522d; /* Darker chai tone */
+  }
+  
+  .show-chaiwalas-button:active {
+    background-color: #8b4513; /* Click effect */
+  }
+  
+  .show-chaiwalas-button:disabled {
+    background-color: #c4a484;
+    cursor: not-allowed;
+  }
+  
+  /* Chaiwala List - Smooth Slide Animation */
+  .chaiwala-list-container {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  
+  /* When active, slide down */
+  .chaiwala-list-container.show {
+    max-height: 500px; /* Adjust height as needed */
+    opacity: 1;
+    transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+  }
+  /* Chaiwala List Container */
+.chaiwala-list-container {
+  background: #fffaf0; /* Light warm chai-like background */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* Title for Top Chaiwalas */
+.chaiwala-list-title {
+  font-size: 24px;
+  color: #5a3e1b; /* Darker brown for a chai-inspired theme */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Individual Chaiwala Item */
+.chaiwala-list {
+  list-style: none;
+  padding: 0;
+}
+
+.chaiwala-item {
+  font-size: 18px;
+  color: #333; /* Dark gray for readability */
+  font-weight: 600;
+  padding: 12px;
+  background: #f8f8f8; /* Light gray background for contrast */
+  border-radius: 8px;
+  margin: 8px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.chaiwala-item:hover {
+  transform: scale(1.02);
+  background: #f0e6d2; /* Slight highlight on hover */
+}
+
+.chaiwala-item strong {
+  color: #222; /* Even darker text for emphasis */
+}
+
+/* Button for Showing/Hiding Top Chaiwalas */
+.show-chaiwalas-button {
+  background-color: #d2691e; /* Chai brown */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 15px;
+}
+
+.show-chaiwalas-button:hover {
+  background-color: #a0522d;
+}
+
+.show-chaiwalas-button:active {
+  background-color: #8b4513;
+}
+
+/* Chaiwala List - Smooth Slide Animation */
+.chaiwala-list-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.chaiwala-list-container.show {
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+}
+.show-chaiwalas-button {
+  background-color: #d2691e; /* Chai-like theme */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.show-chaiwalas-button:hover {
+  background-color: #b3541e;
+}
+
+.chaiwala-list-container {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.chaiwala-list-container.show {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.chaiwala-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.chaiwala-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.chaiwala-item:hover {
+  transform: translateY(-5px);
+}
+
+.chaiwala-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.chaiwala-info {
+  color: #333; /* Dark text for readability */
+  font-size: 16px;
+  font-weight: bold;
+}
