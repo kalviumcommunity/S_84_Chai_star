@@ -1,0 +1,157 @@
+/* ---------- Global Form Container ---------- */
+.form-container {
+  max-width: 500px;
+  /* margin: 60px auto; */
+  padding: 30px 25px;
+  background-color: #fffaf2; /* Lighter for better contrast */
+  border: 2px solid #f3dfc1;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(139, 69, 19, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #4b2e1e; /* Dark brown for better readability */
+}
+
+.form-container h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #5c3a1a;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* ---------- Form Inputs ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #dab49d;
+  border-radius: 10px;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  color: #3a1f0e;
+  transition: border 0.3s ease;
+}
+
+form input::placeholder {
+  color: #9c7b64;
+}
+
+form input:focus {
+  border-color: #c17953;
+  outline: none;
+  background-color: #fffefb;
+}
+
+/* ---------- Submit Button ---------- */
+button[type="submit"] {
+  padding: 12px;
+  background-color: #a0522d;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #8b3f1a;
+}
+
+/* ---------- Error Message ---------- */
+.error-message {
+  color: #b22222;
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* center items horizontally */
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  background-color: #cc6600; /* or your navbar color */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.app-container {
+  padding-top: 80px; /* give space below the fixed navbar */
+}
+
+
+
+.navbar a {
+  padding: 14px 28px;
+  background-color: #d2691e;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  border: 2px solid #8b4513;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #a0522d;
+  transform: translateY(-3px);
+  color: #fffefb;
+}
+
+
+/* ---------- Tick Style Rating Selector ---------- */
+.rating-container {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.rating-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.rating-box {
+  padding: 10px 14px;
+  border: 2px solid #d2691e;
+  border-radius: 8px;
+  background-color: #fff8f0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  user-select: none;
+}
+
+.rating-box input {
+  display: none;
+}
+
+.rating-box:hover {
+  background-color: #ffe6cc;
+}
+
+.rating-box.selected {
+  background-color: #d2691e;
+  color: white;
+  border-color: #8b4513;
+}

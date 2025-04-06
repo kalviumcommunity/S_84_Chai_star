@@ -1,32 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/landingPage.css";
 
-const LandingPage = () => {
-  const [chaiwalas, setChaiwalas] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+const LandingPage = ({ chaiwalas, error }) => {
   const [showList, setShowList] = useState(false);
 
-  const toggleChaiwalas = async () => {
-    if (showList) {
-      setShowList(false); // Hide list
-    } else {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const response = await fetch("http://localhost:3000/api/chaiwalas"); // Adjust the URL if needed
-        if (!response.ok) throw new Error("Failed to fetch chaiwalas");
-
-        const data = await response.json();
-        setChaiwalas(data.data);
-        setShowList(true); // Show list after fetching
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
+  const toggleChaiwalas = () => {
+    setShowList((prev) => !prev);
   };
 
   return (
@@ -36,23 +16,21 @@ const LandingPage = () => {
         Discover top-rated chai spots, vote for your favorite chaiwala, and explore the best chai experiences around you.
       </p>
 
-      {/* Explore & Join Buttons */}
+      {/* Buttons */}
       <div className="landing-buttons">
-        <a href="/explore" className="explore-button">Explore Chaiwalas</a>
-        <a href="/login" className="join-button">Join & Vote</a>
+        <Link to="/add-chaiwala" className="explore-button">Add New Chaiwala</Link>
+        <Link to="/login" className="join-button">Join & Vote</Link>
       </div>
+      
 
-      {/* Show/Hide Top Chaiwalas Button */}
       <button onClick={toggleChaiwalas} className="show-chaiwalas-button">
-        {loading ? "Loading..." : showList ? "Hide Top Chaiwalas" : "Show Top Chaiwalas"}
+        {showList ? "Hide Top Chaiwalas" : "Show Top Chaiwalas"}
       </button>
 
-      {/* Chaiwala Rankings Section with Animation */}
       <div className={`chaiwala-list-container ${showList ? "show" : ""}`}>
         <h2 className="chaiwala-list-title">🔥 Top Chaiwalas</h2>
-
         {error && <p className="error-message">Error: {error}</p>}
-        {chaiwalas.length === 0 && !loading ? (
+        {chaiwalas.length === 0 ? (
           <p className="no-chaiwala-message">No chaiwalas found. Be the first to rank one!</p>
         ) : (
           <ul className="chaiwala-list">
@@ -68,7 +46,7 @@ const LandingPage = () => {
         )}
       </div>
 
-      {/* Features Section */}
+      {/* Features */}
       <div className="features-container">
         <div className="feature-card">
           <h2 className="feature-title">Find Local Chai</h2>
