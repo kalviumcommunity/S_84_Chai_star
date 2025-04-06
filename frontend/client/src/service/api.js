@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 🔹 Use the correct backend URL (update if needed)
-const API_BASE_URL = 'https://s-84-chai-star.onrender.com/api'; // Replace with your actual backend URL
+const API_BASE_URL = process.env.REACT_APP_API_URL; // Replace with your actual backend URL
 
 // ✅ Fetch all chaiwalas from the backend
 export const getChaiwalas = async () => {
