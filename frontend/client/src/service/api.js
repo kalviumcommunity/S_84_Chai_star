@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-// 🔹 Use the correct backend URL (update if needed)
-const API_BASE_URL = process.env.REACT_APP_API_URL; // Replace with your actual backend URL
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+console.log("🔗 API_BASE_URL =", API_BASE_URL); // ✅ Debug print
 
-// ✅ Fetch all chaiwalas from the backend
+// ✅ Fetch all chaiwalas
 export const getChaiwalas = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/chaiwalas`);
-    return response.data.data; // Extract only the relevant data
+    return response.data.data;
   } catch (error) {
     console.error('Error fetching chaiwalas:', error.response?.data || error.message);
     throw new Error(error.response?.data?.message || 'Failed to fetch chaiwalas');
@@ -18,18 +18,18 @@ export const getChaiwalas = async () => {
 export const addChaiwala = async (newChaiwala) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/chaiwalas`, newChaiwala);
-    return response.data.data; // Extract and return the added chaiwala
+    return response.data.data;
   } catch (error) {
     console.error('Error adding chaiwala:', error.response?.data || error.message);
     throw new Error(error.response?.data?.message || 'Failed to add chaiwala');
   }
 };
 
-// ✅ Delete a chaiwala by ID
+// ✅ Delete a chaiwala
 export const deleteChaiwala = async (id) => {
   try {
     const response = await axios.delete(`${API_BASE_URL}/chaiwalas/${id}`);
-    return response.data.message; // Return success message
+    return response.data.message;
   } catch (error) {
     console.error('Error deleting chaiwala:', error.response?.data || error.message);
     throw new Error(error.response?.data?.message || 'Failed to delete chaiwala');

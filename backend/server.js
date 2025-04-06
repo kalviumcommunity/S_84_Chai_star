@@ -12,12 +12,15 @@ app.use(express.json()); // Allows reading JSON data in requests
 
 app.use(cors({
   origin: [
-    'https://chai-star-asap.pages.dev', // Local frontend
+    'http://localhost:5173',  // Local frontend
+    'https://chai-star-asap.pages.dev', 
     'https://fa4eff9e.chai-star-asap.pages.dev' // Deployed frontend
   ], 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+// ✅ Handle preflight OPTIONS requests
+app.options("*", cors());
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI)
