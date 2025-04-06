@@ -12,7 +12,7 @@ app.use(express.json()); // Allows reading JSON data in requests
 
 app.use(cors({
   origin: [
-    'http://localhost:5173', // Local frontend
+    'https://chai-star-asap.pages.dev', // Local frontend
     'https://fa4eff9e.chai-star-asap.pages.dev' // Deployed frontend
   ], 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
