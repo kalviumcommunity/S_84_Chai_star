@@ -1,19 +1,21 @@
 import './App.css'; 
-import LandingPage from "./pages/LandingPage";
 import { useEffect, useState } from 'react';
-import { getChaiwalas } from './service/api'; // Import API function
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { getChaiwalas } from './service/api';
+
+import LandingPage from "./pages/landingPage";
+import AddChaiwalaPage from "./pages/chaiwalaPage";
 
 function App() {
   const [chaiwalas, setChaiwalas] = useState([]);
   const [error, setError] = useState(null);
 
-  // Fetch chaiwalas data from the backend on load
   useEffect(() => {
     const fetchChaiwalas = async () => {
       try {
         const chaiwalaData = await getChaiwalas();
         if (chaiwalaData && chaiwalaData.length > 0) {
-          setChaiwalas(chaiwalaData); // Store the data in state
+          setChaiwalas(chaiwalaData);
         } else {
           setError('No chaiwalas found.');
         }
@@ -27,9 +29,21 @@ function App() {
   }, []);
 
   return (
-    <div className="landing-container">
-      {error ? <p className="error-message">{error}</p> : <LandingPage chaiwalas={chaiwalas} />}
-    </div>
+    <Router>
+  {/* Move navbar out of app-container */}
+  <nav className="navbar">
+    <Link to="/">🏠 Home</Link>
+    <Link to="/add-chaiwala">➕ Add Chaiwala</Link>
+  </nav>
+
+  <div className="app-container">
+    <Routes>
+      <Route path="/" element={<LandingPage chaiwalas={chaiwalas} error={error} />} />
+      <Route path="/add-chaiwala" element={<AddChaiwalaPage />} />
+    </Routes>
+  </div>
+</Router>
+
   );
 }
 
