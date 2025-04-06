@@ -2,7 +2,7 @@
 # Chaiwala Ranking App
 
 ## Cloudflare link
-https://fa4eff9e.chai-star-asap.pages.dev/
+https://chai-star-asap.pages.dev/
 
 ## Render link
 https://s-84-chai-star.onrender.com
