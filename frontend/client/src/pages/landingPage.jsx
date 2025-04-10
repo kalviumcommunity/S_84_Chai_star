@@ -1,12 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
 import "../styles/landingPage.css";
+import axios from "../service/axios";
 
 const LandingPage = ({ chaiwalas, error }) => {
   const [showList, setShowList] = useState(false);
+  const navigate = useNavigate();
 
   const toggleChaiwalas = () => {
     setShowList((prev) => !prev);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/chaiwalas/${id}`);
+      window.location.reload(); // Reload to refresh the updated list
+    } catch (err) {
+      console.error("Delete error:", err);
+      alert("Failed to delete chaiwala.");
+    }
   };
 
   return (
@@ -21,7 +34,6 @@ const LandingPage = ({ chaiwalas, error }) => {
         <Link to="/add-chaiwala" className="explore-button">Add New Chaiwala</Link>
         <Link to="/login" className="join-button">Join & Vote</Link>
       </div>
-      
 
       <button onClick={toggleChaiwalas} className="show-chaiwalas-button">
         {showList ? "Hide Top Chaiwalas" : "Show Top Chaiwalas"}
@@ -39,6 +51,10 @@ const LandingPage = ({ chaiwalas, error }) => {
                 <img src={chaiwala.image} alt={chaiwala.name} className="chaiwala-image" />
                 <div className="chaiwala-info">
                   <strong>{chaiwala.name}</strong> - {chaiwala.location} - ⭐ {chaiwala.rating}
+                  <div className="action-buttons">
+                    <button onClick={() => navigate(`/update-chaiwala/${chaiwala._id}`)}>Edit</button>
+                    <button onClick={() => handleDelete(chaiwala._id)}>Delete</button>
+                  </div>
                 </div>
               </li>
             ))}
