@@ -5,6 +5,7 @@ import { getChaiwalas } from './service/api';
 
 import LandingPage from "./pages/landingPage";
 import AddChaiwalaPage from "./pages/chaiwalaPage";
+import UpdateChaiwalaPage from "./pages/UpdateChaiwala";
 
 function App() {
   const [chaiwalas, setChaiwalas] = useState([]);
@@ -40,6 +41,7 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage chaiwalas={chaiwalas} error={error} />} />
       <Route path="/add-chaiwala" element={<AddChaiwalaPage />} />
+      <Route path="/update-chaiwala/:id" element={<UpdateChaiwalaPage />} />
     </Routes>
   </div>
 </Router>
