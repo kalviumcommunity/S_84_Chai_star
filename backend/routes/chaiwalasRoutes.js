@@ -1,7 +1,21 @@
 const express = require("express");
-const Chai = require("../models/chaiwalasModel"); // ✅ Fixed model import
+const Chai = require("../models/chaiwalasModel");
+const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
+
+// ✅ Validation rules
+const chaiwalaValidationRules = [
+  body("name").notEmpty().withMessage("Name is required"),
+  body("location").notEmpty().withMessage("Location is required"),
+  body("rating")
+    .isInt({ min: 1, max: 5 })
+    .withMessage("Rating must be a number between 1 and 5"),
+  body("image")
+    .optional()
+    .isURL()
+    .withMessage("Image must be a valid URL"),
+];
 
 // ✅ Get all chaiwalas
 router.get("/chaiwalas", async (req, res) => {
@@ -34,28 +48,48 @@ router.get("/chaiwalas/:id", async (req, res) => {
 });
 
 // ✅ Add a new chaiwala
-router.post("/chaiwalas", async (req, res) => {
+router.post("/chaiwalas", chaiwalaValidationRules, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, errors: errors.array() });
+  }
+
   try {
     const { name, location, rating, image } = req.body;
-    if (!name || !location || rating === undefined) {
-      return res.status(400).json({ success: false, message: "Name, location, and rating are required" });
+
+    // ✅ Check if chaiwala already exists (same name + location)
+    const existing = await Chai.findOne({ name, location });
+    if (existing) {
+      return res.status(409).json({
+        success: false,
+        message: "Chaiwala with the same name and location already exists",
+      });
     }
 
     const newChaiwala = new Chai({ name, location, rating, image });
     await newChaiwala.save();
 
-    res.status(201).json({ success: true, message: "Chaiwala added successfully", data: newChaiwala });
+    res.status(201).json({
+      success: true,
+      message: "Chaiwala added successfully",
+      data: newChaiwala,
+    });
   } catch (error) {
     console.error("Error adding chaiwala:", error);
     res.status(500).json({ success: false, message: "Server error", error: error.message });
   }
 });
 
-// ✅ Update a chaiwala (PUT)
-router.put("/chaiwalas/:id", async (req, res) => {
+// ✅ Update a chaiwala
+router.put("/chaiwalas/:id", chaiwalaValidationRules, async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, errors: errors.array() });
+  }
+
   try {
     const { name, location, rating, image } = req.body;
-    
+
     const updatedChaiwala = await Chai.findByIdAndUpdate(
       req.params.id,
       { name, location, rating, image },
@@ -66,7 +100,11 @@ router.put("/chaiwalas/:id", async (req, res) => {
       return res.status(404).json({ success: false, message: "Chaiwala not found" });
     }
 
-    res.status(200).json({ success: true, message: "Chaiwala updated successfully", data: updatedChaiwala });
+    res.status(200).json({
+      success: true,
+      message: "Chaiwala updated successfully",
+      data: updatedChaiwala,
+    });
   } catch (error) {
     console.error("Error updating chaiwala:", error);
     res.status(500).json({ success: false, message: "Server error", error: error.message });
