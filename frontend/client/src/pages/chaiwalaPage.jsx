@@ -9,6 +9,7 @@ const AddChaiwalaPage = () => {
     location: "",
     rating: 5,
     image: "",
+    created_by: "", // simple text field
   });
 
   const [error, setError] = useState("");
@@ -30,10 +31,16 @@ const AddChaiwalaPage = () => {
     e.preventDefault();
     setError("");
 
+    if (!formData.created_by) {
+      setError("Please enter Created By field.");
+      return;
+    }
+
     try {
       await addChaiwala(formData);
-      navigate("/"); // Redirect to homepage after adding
+      navigate("/"); // Redirect after adding
     } catch (err) {
+      console.error(err);
       setError("Something went wrong! Please try again.");
     }
   };
@@ -60,17 +67,25 @@ const AddChaiwalaPage = () => {
           onChange={handleChange}
           required
         />
-        
-        {/* Custom rating container */}
+
+        {/* Created By (Simple Text Field) */}
+        <input
+          type="text"
+          name="created_by"
+          placeholder="Created By"
+          value={formData.created_by}
+          onChange={handleChange}
+          required
+        />
+
+        {/* Rating Section */}
         <div className="rating-container">
           Rating:
           <div className="rating-options">
             {[1, 2, 3, 4, 5].map((value) => (
               <label
                 key={value}
-                className={`rating-box ${
-                  formData.rating === value ? "selected" : ""
-                }`}
+                className={`rating-box ${formData.rating === value ? "selected" : ""}`}
                 onClick={() => handleRatingClick(value)}
               >
                 {value}
