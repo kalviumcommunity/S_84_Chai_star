@@ -10,17 +10,30 @@ const UpdateChaiwala = () => {
     location: "",
     rating: "",
     image: "",
+    created_by: "", // ✅ Added created_by
   });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`/chaiwalas/${id}`).then((res) => {
-      if (res.data.success) setFormData(res.data.data);
-      setLoading(false);
-    }).catch((err) => {
-      console.error("Fetch failed", err);
-      setLoading(false);
-    });
+    axios
+      .get(`/chaiwalas/${id}`)
+      .then((res) => {
+        if (res.data.success) {
+          const data = res.data.data;
+          setFormData({
+            name: data.name || "",
+            location: data.location || "",
+            rating: data.rating || "",
+            image: data.image || "",
+            created_by: data.created_by || "", // ✅ Default to empty string
+          });
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Fetch failed", err);
+        setLoading(false);
+      });
   }, [id]);
 
   const handleChange = (e) =>
@@ -28,8 +41,8 @@ const UpdateChaiwala = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const rating = Math.min(Math.max(Number(formData.rating), 1), 5);
-    await axios.put(`/chaiwalas/${id}`, formData);
+    const rating = Math.min(Math.max(Number(formData.rating), 1), 5); // limit rating between 1–5
+    await axios.put(`/chaiwalas/${id}`, { ...formData, rating });
     navigate("/");
   };
 
@@ -38,6 +51,7 @@ const UpdateChaiwala = () => {
   return (
     <form onSubmit={handleSubmit} style={formStyle}>
       <h2 style={headingStyle}>Update Chaiwala</h2>
+
       <input
         type="text"
         name="name"
@@ -45,7 +59,9 @@ const UpdateChaiwala = () => {
         placeholder="Name"
         onChange={handleChange}
         style={inputStyle}
+        required
       />
+
       <input
         type="text"
         name="location"
@@ -53,17 +69,20 @@ const UpdateChaiwala = () => {
         placeholder="Location"
         onChange={handleChange}
         style={inputStyle}
+        required
       />
+
       <input
-  type="number"
-  name="rating"
-  value={formData.rating}
-  placeholder="Rating"
-  onChange={handleChange}
-  style={inputStyle}
-  min="1"
-  max="5"
-/>
+        type="number"
+        name="rating"
+        value={formData.rating}
+        placeholder="Rating (1 to 5)"
+        onChange={handleChange}
+        style={inputStyle}
+        min="1"
+        max="5"
+        required
+      />
 
       <input
         type="text"
@@ -73,12 +92,25 @@ const UpdateChaiwala = () => {
         onChange={handleChange}
         style={inputStyle}
       />
-   <button className="update-button">Update</button>
 
+      <input
+        type="text"
+        name="created_by"
+        value={formData.created_by}
+        placeholder="Created By"
+        onChange={handleChange}
+        style={inputStyle}
+        required
+      />
+
+      <button type="submit" className="update-button">
+        Update
+      </button>
     </form>
   );
 };
 
+// Inline styles
 const formStyle = {
   maxWidth: "400px",
   margin: "30px auto",

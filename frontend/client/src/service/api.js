@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
-console.log("🔗 API_BASE_URL =", API_BASE_URL); // ✅ Debug print
+console.log("🔗 API_BASE_URL =", API_BASE_URL);
 
 // ✅ Fetch all chaiwalas
 export const getChaiwalas = async () => {
@@ -33,5 +33,16 @@ export const deleteChaiwala = async (id) => {
   } catch (error) {
     console.error('Error deleting chaiwala:', error.response?.data || error.message);
     throw new Error(error.response?.data?.message || 'Failed to delete chaiwala');
+  }
+};
+
+// ✅ Get all users
+export const getAllUsers = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/users`);
+    return response.data.data; // Only users array
+  } catch (error) {
+    console.error('Error fetching users:', error.response?.data || error.message);
+    throw new Error(error.response?.data?.message || 'Failed to fetch users');
   }
 };

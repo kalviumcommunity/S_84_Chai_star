@@ -441,3 +441,59 @@ body, html {
 .update-button:hover {
   background: #ff8a65;
 }
+.filters-inline {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0 20px;
+  flex-wrap: wrap; /* Allows filters to wrap onto the next line */
+  overflow-x: hidden; /* Ensures no horizontal scrolling */
+  justify-content: flex-start; /* Aligns items to the left */
+  border-color: #d2691e; /* Chai brown border color */
+}
+
+/* Filters Style */
+.filters-inline select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 140px;
+  color: #ffffff; /* Chai brown text color */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-color: #d2691e; /* Chai brown border color */
+  background-color: #d2691e;
+}
+
+/* Hover effect for filters */
+.filters-inline select:hover {
+  background-color: #f5e3d3; /* Light chai-inspired color on hover */
+  border-color: #d2691e; /* Chai brown border color */
+}
+
+.filters-inline select:focus {
+  border-color: #ff914d; /* A darker chai color on focus */
+  background-color: #f5e1c0; /* Subtle light chai background */
+}
+
+.chaiwala-list-container {
+  max-width: 1000px; /* Increase the max-width to make it wider */
+  margin: 20px auto;
+  text-align: center;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.chaiwala-list-container.show {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 20px;
+  padding-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+/* Optional: Adjusting scrollbar thumb color */
+.chaiwala-list-container.show::-webkit-scrollbar-thumb {
+  background-color: #ff914d;
+}
